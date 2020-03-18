@@ -2,7 +2,6 @@ import { PlanetData } from './../../model/planet-data';
 import { Planet } from './../../model/planet';
 import { PlanetDataService } from './../../services/planet-data.service';
 import { Component, OnInit } from '@angular/core';
-import { PlanetData } from 'src/app/model/planet-data';
 
 @Component({
   selector: 'app-planet-search',
@@ -27,7 +26,7 @@ export class PlanetSearchComponent implements OnInit {
     console.log(this.searchValue);
     setTimeout(() => {
       for (const planet of this.planets.results) {
-        if (planet.name.toLowerCase().includes(this.searchValue, 0)) {
+        if (planet.name.toLowerCase().includes(this.searchValue.toLowerCase(), 0)) {
           filteredPlanets.push(planet);
         }
       }
