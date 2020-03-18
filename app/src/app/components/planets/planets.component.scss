@@ -9,41 +9,39 @@ section {
   @extend %flex-direction-col;
   padding: 50px;
 
-
   table,
-th,
-td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
+  th,
+  td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
 
-table {
-  width: 100%;
-  text-align: center;
+  table {
+    width: 100%;
+    text-align: center;
 
-  th {
-    font-weight: 600;
+    th {
+      font-weight: 600;
+    }
+
+  }
+
+  th,
+  td {
+    padding: 10px;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    .btn-pg {
+      width: 50px;
+    }
+
   }
 
 }
-
-th,
-td {
-  padding: 10px;
-}
-
-.nav{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  // justify-content: space-around;
-
-.btn-pg{
-  width: 50px;
-}
-
-}
-
-}
-
-

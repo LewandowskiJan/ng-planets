@@ -1,6 +1,8 @@
+import { PlanetData } from './../../model/planet-data';
 import { Planet } from './../../model/planet';
 import { PlanetDataService } from './../../services/planet-data.service';
 import { Component, OnInit } from '@angular/core';
+import { PlanetData } from 'src/app/model/planet-data';
 
 @Component({
   selector: 'app-planet-search',
@@ -10,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class PlanetSearchComponent implements OnInit {
 
   public searchValue: string;
-  private planets: Planet[];
+  private planets: PlanetData;
   constructor(private planetDataService: PlanetDataService) {
   }
 
@@ -24,12 +26,14 @@ export class PlanetSearchComponent implements OnInit {
     const filteredPlanets: Planet[] = [];
     console.log(this.searchValue);
     setTimeout(() => {
-      for (const planet of this.planets) {
+      for (const planet of this.planets.results) {
         if (planet.name.toLowerCase().includes(this.searchValue, 0)) {
           filteredPlanets.push(planet);
         }
       }
-      this.planetDataService.filteredPlanetData.next(filteredPlanets);
+      const tmpObj = new PlanetData();
+      tmpObj.results = filteredPlanets;
+      this.planetDataService.filteredPlanetData.next(tmpObj);
     }, 0);
   }
 }

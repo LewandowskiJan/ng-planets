@@ -1,5 +1,7 @@
 import { PlanetDataService } from './../../services/planet-data.service';
 import { Component, OnInit } from '@angular/core';
+import { Planet } from 'src/app/model/planet';
+import { PlanetData } from 'src/app/model/planet-data';
 
 @Component({
   selector: 'app-planets',
@@ -9,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class PlanetsComponent implements OnInit {
 
   constructor(private planetService: PlanetDataService) { }
-  data: any = [];
+  data: PlanetData;
 
   ngOnInit() {
 
@@ -17,9 +19,9 @@ export class PlanetsComponent implements OnInit {
     this.planetService.planetData.subscribe(planets => {
       this.data = planets;
     });
-    this.planetService.filteredPlanetData.subscribe(filteredPlanet => {
-      if (filteredPlanet !== []) {
-        this.data = filteredPlanet;
+    this.planetService.filteredPlanetData.subscribe(filteredPlanetData => {
+      if (filteredPlanetData.results !== []) {
+        this.data = filteredPlanetData;
       }
     });
 
