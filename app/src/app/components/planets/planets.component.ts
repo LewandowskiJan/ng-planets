@@ -1,3 +1,4 @@
+import { MockApiService } from './../../services/mock-api.service';
 import { PlanetDataService } from './../../services/planet-data.service';
 import { Component, OnInit } from '@angular/core';
 import { Planet } from 'src/app/model/planet';
@@ -10,20 +11,24 @@ import { PlanetData } from 'src/app/model/planet-data';
 })
 export class PlanetsComponent implements OnInit {
 
-  constructor(private planetService: PlanetDataService) { }
+  constructor(
+    private planetService: PlanetDataService,
+    private mockApiService: MockApiService
+  ) { }
   data: PlanetData;
 
   ngOnInit() {
 
-    this.planetService.getPlanetData();
-    this.planetService.planetData.subscribe(planets => {
-      this.data = planets;
-    });
-    this.planetService.filteredPlanetData.subscribe(filteredPlanetData => {
-      if (filteredPlanetData.results !== []) {
-        this.data = filteredPlanetData;
-      }
-    });
+    this.data = this.mockApiService.getMockData();
+    // this.planetService.getPlanetData();
+    // this.planetService.planetData.subscribe(planets => {
+    //   this.data = planets;
+    // });
+    // this.planetService.filteredPlanetData.subscribe(filteredPlanetData => {
+    //   if (filteredPlanetData.results !== []) {
+    //     this.data = filteredPlanetData;
+    //   }
+    // });
 
 
   }
