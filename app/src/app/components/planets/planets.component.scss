@@ -4,10 +4,75 @@
   flex-direction: column;
 }
 
+
 section {
   display: flex;
   @extend %flex-direction-col;
   padding: 50px;
+
+  .switch-box {
+    display: flex;
+    width: 100px;
+    padding: 10px;
+    margin: 15px 15px 15px 0;
+    border-radius: 4px;
+    justify-items: center;
+    align-items: center;
+    color: white;
+    background-color: #0a005f;
+
+    .switch {
+      width: 30px;
+      height: 30px;
+    }
+
+    label {
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+
+
+  .btn-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
+    // align-items: center;
+
+    .button {
+      background-color: #0a005f;
+      min-width: 50px;
+      border: 1px solid #808080;
+      border-radius: 4px;
+      margin-right: 1px;
+      color: white;
+      padding: 5px 5px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+
+      &.active {
+        background-color: #1a1a9b;
+      }
+
+      &:not(:last-child) {
+        border-right: none;
+      }
+
+      &:hover {
+        background-color: #6c6ed8;
+      }
+
+      &:active {
+        background-color: #6c6ed8;
+      }
+    }
+  }
+
+
 
   table,
   th,
@@ -19,29 +84,41 @@ section {
   table {
     width: 100%;
     text-align: center;
+    border-collapse: collapse;
 
     th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: center;
+      background-color: #0a005f;
+      color: white;
       font-weight: 600;
     }
 
+    tr {
+      &:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: #ddd;
+      }
+
+      &:focus,
+      &:active {
+        border: none;
+        background-color: rgba($color: green, $alpha: 0.2);
+      }
+    }
   }
 
   th,
   td {
-    padding: 10px;
+    border: 1px solid #ddd;
+    padding: 8px;
   }
 
-  .nav {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
 
-    .btn-pg {
-      width: 50px;
-    }
-
-  }
 
 }
