@@ -1,0 +1,25 @@
+<section>
+  <nav class="planet-details">
+    <a (click)="backClicked()"> back</a>
+    <div class="planet-data">Details</div>
+  </nav>
+
+  <div class="planet-details">
+    <div class="planet-title">Name</div>
+    <div class="planet-data">{{ planet?.name }}</div>
+  </div>
+
+  <div class="planet-details">
+    <div class="planet-title">Population</div>
+    <div class="planet-data">{{ planet?.population }}</div>
+  </div>
+  <div class="planet-details">
+    <div class="planet-title">Terrain</div>
+    <div class="planet-data">{{ planet?.terrain }}</div>
+  </div>
+  <div class="planet-details">
+    <div class="planet-title">Url</div>
+    <div class="planet-data">{{ planet?.url }}</div>
+  </div>
+</section>
+

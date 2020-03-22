@@ -8,13 +8,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { PlanetsComponent } from './components/planets/planets.component';
 import { PlanetsDataComponent } from './components/planets-data/planets-data.component';
 import { PlanetSearchComponent } from './components/planet-search/planet-search.component';
+import { PlanetDetailsComponent } from './components/planet-details/planet-details.component';
+import { PlanetHeaderComponent } from './components/planet-header/planet-header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlanetsComponent,
     PlanetsDataComponent,
-    PlanetSearchComponent
+    PlanetSearchComponent,
+    PlanetDetailsComponent,
+    PlanetHeaderComponent
   ],
   imports: [
     BrowserModule,
