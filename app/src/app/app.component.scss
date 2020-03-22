@@ -1,0 +1,11 @@
+%flex-direction-col {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+
+section {
+  display: flex;
+  @extend %flex-direction-col;
+}
