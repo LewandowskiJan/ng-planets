@@ -27,7 +27,7 @@ export class PlanetDetailsComponent implements OnInit {
         this.activatedRoute.params.subscribe((params: Params) => {
           this.id = params.id;
 
-          this.planetsService.getPlaneById(this.id);
+          this.planetsService.getPlanetById(this.id);
           this.planetsService.currentPlanet.subscribe(planet => {
             this.planet = planet;
           });

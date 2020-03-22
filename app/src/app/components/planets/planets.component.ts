@@ -1,6 +1,5 @@
 import { PlanetDataService } from './../../services/planet-data.service';
 import { Component, OnInit } from '@angular/core';
-import { Planet } from 'src/app/model/planet';
 import { PlanetData } from 'src/app/model/planet-data';
 import { Router } from '@angular/router';
 
