@@ -32,7 +32,9 @@ export class PlanetSearchComponent implements OnInit {
       }
       const tmpObj = new PlanetData();
       tmpObj.results = filteredPlanets;
+      this.planetDataService.showedData = tmpObj;
       this.planetDataService.filteredPlanetData.next(tmpObj);
     }, 0);
   }
+
 }

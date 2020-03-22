@@ -1,0 +1,25 @@
+%flex-direction-col {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+section {
+  display: flex;
+  @extend %flex-direction-col;
+  padding: 30px 50px 0 50px;
+
+  form {
+    width: 100%;
+
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      background-color: white;
+      padding: 12px 20px 12px 40px;
+    }
+  }
+}

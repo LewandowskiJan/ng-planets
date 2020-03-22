@@ -1,10 +1,12 @@
-<p>planet-search works!</p>
-<form action="/">
-  <input
+<section>
+  <form action="/">
+    <label>Search the planet</label>
+    <input
       type="text"
-      placeholder="type planet name"
+      placeholder="Search.."
       name="search"
       (ngModelChange)="searchPlanets()"
       [(ngModel)]="searchValue"
-  />
-</form>
+    />
+  </form>
+</section>
