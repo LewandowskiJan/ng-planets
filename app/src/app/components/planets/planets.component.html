@@ -1,38 +1,84 @@
 <section>
-  <p>planets works!</p>
+  <!-- <div class="switch-box">
+      <input id="switch" type="checkbox" class="switch" [checked]="isUseApi" (click)="changeEnv(isUseApi)">
+      <label for="switch">Api</label>
+  </div> -->
+
+  <div class="btn-group">
+    <button class="button" (click)="changeQuantityOfPlanetOnPage(5)">5</button>
+    <button class="button" (click)="changeQuantityOfPlanetOnPage(10)">
+      10
+    </button>
+    <button class="button" (click)="changeQuantityOfPlanetOnPage(25)">
+      25
+    </button>
+    <button class="button" (click)="changeQuantityOfPlanetOnPage(100)">
+      100
+    </button>
+  </div>
+
   <table>
     <thead>
       <tr>
         <th>Name</th>
-        <!-- <th>Population</th>
-        <th>Terrain</th> -->
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of data?.results">
-        <td>{{ item.name }}</td>
-        <!-- <td>{{ item.population }}</td>
-        <td>{{ item.terrain }}</td> -->
+      <tr *ngFor="let item of showedData?.results; index as i">
+        <td [routerLink]="['/planet/', getIdFromUrl(item.url)]">
+          {{ item.name }}
+        </td>
       </tr>
     </tbody>
   </table>
-  <div class="nav">
-    <button *ngIf="data?.next" class="btn" (click)="changePage(data.next)">
+  <div class="btn-group">
+    <button
+      *ngIf="showedData?.next && this.planetService.isUseApi"
+      class="button"
+      (click)="changePage(showedData.next)"
+    >
       Next
     </button>
-    <button class="btn-pg" (click)="changeToPage(1)">1</button>
-    <button class="btn-pg" (click)="changeToPage(2)">2</button>
-    <button class="btn-pg" (click)="changeToPage(3)">3</button>
-    <button class="btn-pg" (click)="changeToPage(4)">4</button>
-    <button class="btn-pg" (click)="changeToPage(5)">5</button>
-    <button class="btn-pg" (click)="changeToPage(6)">6</button>
-    <button class="btn-pg" (click)="changeToPage(7)">7</button>
+
     <button
-      *ngIf="data?.previous"
-      class="btn"
-      (click)="changePage(data.previous)"
+      *ngIf="currentPage !== pagingData[0]?.length && !this.planetService.isUseApi"
+      class="button"
+      (click)="changeToPage(currentPage + 1)"
     >
-      Previous
+      Next
+    </button>
+
+    <div *ngFor="let pageNr of pagingData[0]">
+      <button
+        *ngIf="!this.planetService.isUseApi"
+        [ngClass]="currentPage === pageNr ? 'button active' : 'button'"
+        (click)="changeToPage(pageNr)"
+      >
+        {{ pageNr }}
+      </button>
+      <button
+        *ngIf="this.planetService.isUseApi"
+        [ngClass]="currentPage === pageNr ? 'button active' : 'button'"
+        (click)="changePage(pageNr)"
+      >
+        {{ pageNr }}
+      </button>
+    </div>
+
+    <button
+      *ngIf="showedData?.previous && this.planetService.isUseApi"
+      class="button"
+      (click)="changePage(showedData.previous)"
+    >
+      Prev
+    </button>
+
+    <button
+      *ngIf="currentPage !== 1 && !this.planetService.isUseApi"
+      class="button"
+      (click)="changeToPage(currentPage - 1)"
+    >
+      Prev
     </button>
   </div>
 </section>
